@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Liens</title>
-
-    <!-- Police -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+    <title>Movies - Votre Cinéma en Ligne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* --- RESET & BASE --- */
         * {
@@ -23,16 +20,37 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
             overflow-x: hidden;
+            padding: 20px;
         }
 
-        /* --- TITRE --- */
-        h1 {
-            margin-top: 50px;
-            font-size: 3rem;
+        /* --- HEADER & LOGO --- */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+            color: #ff0066;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 102, 0.7));
+        }
+
+        .logo-text {
+            font-size: 2.8rem;
             font-weight: 700;
             letter-spacing: 3px;
-            text-transform: uppercase;
             background: linear-gradient(90deg, #ff0066, #ffae00, #00eaff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -46,13 +64,13 @@
 
         /* --- CONTAINER DES BOUTONS --- */
         .container {
-            margin-top: 40px;
-            width: 90%;
+            margin-top: 20px;
+            width: 100%;
             max-width: 600px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
-            padding-bottom: 80px;
+            gap: 20px;
+            padding-bottom: 40px;
             animation: fadeIn 1.5s ease forwards;
             opacity: 0;
         }
@@ -61,10 +79,10 @@
             to { opacity: 1; }
         }
 
-        /* --- STYLE DES BOUTONS --- */
+        /* --- STYLE DES BOUTONS MOVIES --- */
         .link-button {
-            padding: 20px;
-            font-size: 22px;
+            padding: 18px 25px;
+            font-size: 1.1rem;
             border: none;
             cursor: pointer;
             border-radius: 12px;
@@ -75,11 +93,21 @@
             backdrop-filter: blur(10px);
             text-shadow: 0px 0px 8px rgba(255,255,255,0.3);
             border: 1px solid rgba(255,255,255,0.15);
-            transition: 0.25s ease-in-out;
+            transition: all 0.3s ease-in-out;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
+        .link-button i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* REFLET animé sur hover */
         .link-button::before {
             content: "";
             position: absolute;
@@ -101,32 +129,177 @@
             top: 100%;
         }
 
+        /* Glow + scale */
         .link-button:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
             box-shadow: 0 0 20px rgba(255,0,120,0.6), 0 0 40px rgba(0,255,255,0.5);
             border-color: rgba(255,255,255,0.3);
         }
 
+        /* --- BOUTON CLICK ANIMATION --- */
         .link-button:active {
             transform: scale(0.97);
             box-shadow: 0 0 10px rgba(255,0,120,0.3);
         }
+
+        /* --- FILM CARD STYLES --- */
+        .movie-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .movie-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #ffae00;
+            text-shadow: 0 0 10px rgba(255, 174, 0, 0.5);
+        }
+
+        .movie-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .movie-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+            width: 100%;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 2.2rem;
+            }
+            
+            .logo-icon {
+                font-size: 2rem;
+            }
+            
+            .link-button {
+                padding: 16px 20px;
+                font-size: 1rem;
+            }
+            
+            .movie-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+            }
+            
+            .logo-icon {
+                font-size: 1.7rem;
+                margin-right: 10px;
+            }
+            
+            .container {
+                gap: 15px;
+            }
+            
+            .link-button {
+                padding: 14px 18px;
+                font-size: 0.95rem;
+            }
+            
+            .movie-title {
+                font-size: 1.1rem;
+            }
+            
+            .movie-info {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                font-size: 1.4rem;
+            }
+            
+            .link-button {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="header">
+        <div class="logo-container">
+            <i class="fas fa-film logo-icon"></i>
+            <h1 class="logo-text">MOVIES</h1>
+        </div>
+        <p style="text-align: center; margin-bottom: 20px; color: #ccc; max-width: 500px;">
+            Découvrez notre sélection exclusive de films et séries en streaming
+        </p>
+    </div>
 
-    <h1>Mes Liens</h1>
+    <div class="container" id="links-container">
+        <!-- Les boutons seront générés ici par JavaScript -->
+    </div>
 
-    <!-- CONTENEUR DES BOUTONS -->
-    <div id="links-container" class="container"></div>
+    <div class="movie-card">
+        <h2 class="movie-title">Nouveautés du Mois</h2>
+        <div class="movie-info">
+            <span><i class="fas fa-calendar-alt"></i> Octobre 2023</span>
+            <span><i class="fas fa-star"></i> Recommandé</span>
+        </div>
+        <p class="movie-description">
+            Découvrez les dernières sorties cinéma et les films les plus populaires du moment. 
+            Des blockbusters aux films d'auteur, il y en a pour tous les goûts.
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>Movies &copy; 2023 - Tous droits réservés</p>
+    </div>
 
     <script>
-        // Exemple de JSON contenant les liens
+        // Données des liens
         const data = {
             "links": [
-                { "label": "Google", "url": "https://google.com" },
-                { "label": "YouTube", "url": "https://youtube.com" },
-                { "label": "OpenAI", "url": "https://openai.com" }
+                { "label": "Nouveautés", "url": "#", "icon": "fas fa-star" },
+                { "label": "Films Populaires", "url": "#", "icon": "fas fa-fire" },
+                { "label": "Séries TV", "url": "#", "icon": "fas fa-tv" },
+                { "label": "Ma Liste", "url": "#", "icon": "fas fa-bookmark" },
+                { "label": "Recherche", "url": "#", "icon": "fas fa-search" },
+                { "label": "Paramètres", "url": "#", "icon": "fas fa-cog" }
             ]
         };
 
@@ -136,15 +309,26 @@
         data.links.forEach(link => {
             const btn = document.createElement("button");
             btn.className = "link-button";
-            btn.textContent = link.label;
+            btn.innerHTML = `<i class="${link.icon}"></i> ${link.label}`;
 
             btn.addEventListener("click", () => {
-                window.location.href = link.url;
+                // Animation de clic
+                btn.style.transform = "scale(0.95)";
+                setTimeout(() => {
+                    btn.style.transform = "";
+                }, 150);
+                
+                // Redirection (remplacer par votre logique)
+                if(link.url !== "#") {
+                    window.location.href = link.url;
+                } else {
+                    // Simuler une action pour les liens fictifs
+                    alert(`Navigation vers: ${link.label}`);
+                }
             });
 
             container.appendChild(btn);
         });
     </script>
-
 </body>
 </html>
