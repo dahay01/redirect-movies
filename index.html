@@ -138,51 +138,50 @@
 
     <div class="container" id="links-container"></div>
 
-    <div class="footer">
-        <p id="footer-text">Movies © 2025 - All rights reserved</p>
-    </div>
+    <footer id="footer"></footer>
 
     <script>
         const translations = {
             en: {
                 title: "MOVIES",
                 subtitle: "Discover our exclusive selection of movies, series and TV",
-                footer: "Movies © 2025 - All rights reserved",
+                footer: "Movies © {year} - All rights reserved"
                 links: [
-                    { label: "Movies / Series", url: "https://netfree2.cc/home", icon: "fa-brands fa-film" },
+                    { label: "Movies / Series", url: "https://netfree2.cc/home", icon: "fas fa-film" },
                     { label: "Live TV", url: "https://tv.garden/", icon: "fas fa-tv" },
                     { label: "TikTok Live", url: "https://www.tiktok.com/live", icon: "fa-brands fa-tiktok" },
-                    { label: "Kick Streaming", url: "https://kick.com/browse", icon: "fa-brands fa-kickstarter" }, 
+                    { label: "Kick", url: "https://kick.com/browse", icon: "fa-brands fa-kickstarter" }, 
                     { label: "Twitch", url: "https://www.twitch.tv/", icon: "fa-brands fa-twitch" }
                 ]
             },
             fr: {
                 title: "FILMS",
                 subtitle: "Découvrez notre sélection exclusive de films, séries et TV",
-                footer: "Movies © 2025 - Tous droits réservés",
+                footer: "Movies © {year} - Tous droits réservés"
                 links: [
                     { label: "Films / Séries", url: "https://netfree2.cc/home", icon: "fas fa-film" },
                     { label: "TV en direct", url: "https://tv.garden/", icon: "fas fa-tv" },
                     { label: "TikTok Live", url: "https://www.tiktok.com/live", icon: "fa-brands fa-tiktok" },
-                    { label: "Kick Streaming", url: "https://kick.com/browse", icon: "fa-brands fa-kickstarter" },
+                    { label: "Kick", url: "https://kick.com/browse", icon: "fa-brands fa-kickstarter" },
                     { label: "Twitch", url: "https://www.twitch.tv/", icon: "fa-brands fa-twitch" }
                 ]
             },
             es: {
                 title: "PELÍCULAS",
                 subtitle: "Descubre nuestra selección exclusiva de películas, series y TV",
-                footer: "Movies © 2025 - Todos los derechos reservados",
+                footer: "Movies © {year} - Todos los derechos reservados",
                 links: [
                     { label: "Películas / Series", url: "https://netfree2.cc/home", icon: "fas fa-film" },
                     { label: "TV en vivo", url: "https://tv.garden/", icon: "fas fa-tv" },
                     { label: "TikTok En Vivo", url: "https://www.tiktok.com/live", icon: "fa-brands fa-tiktok" },
-                    { label: "Kick Streaming", url: "https://kick.com/browse", icon: "fa-brands fa-kickstarter" },
+                    { label: "Kick", url: "https://kick.com/browse", icon: "fa-brands fa-kickstarter" },
                     { label: "Twitch", url: "https://www.twitch.tv/", icon: "fa-brands fa-twitch" }
                 ]
             }
         };
 
         const container = document.getElementById("links-container");
+        
 
         function loadLanguage(lang) {
             const t = translations[lang];
@@ -202,9 +201,15 @@
             });
         }
 
+        const currentYear = new Date().getFullYear();
+        const footerText = translations[lang].footer.replace("{year}", currentYear);
+
+        document.getElementById("footer").textContent = footerText;
+
         loadLanguage("en");
     </script>
 
 </body>
 </html>
+
 
